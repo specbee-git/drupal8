@@ -9,16 +9,12 @@ RUN apt-get update \
         git \
         openssl \
         supervisor \
-        wget
+        wget \
+	gnupg
 
 RUN chmod -R 777 /tmp
 
 #Install nginx
-WORKDIR /tmp
-RUN wget http://nginx.org/keys/nginx_signing.key
-RUN apt-key add nginx_signing.key
-COPY ./templates/nginx.list .
-RUN cat /tmp/nginx.list >> /etc/apt/sources.list && rm /tmp/nginx.list
 RUN apt-get update \
     && apt-get -y install \
         nginx 
@@ -57,7 +53,6 @@ RUN apt-get install -y \
     libldap2-dev \
     libmagickwand-dev \
     libmcrypt-dev \
-    libpng12-dev \
     libpq-dev \
     libxml2-dev \
     mysql-client \
