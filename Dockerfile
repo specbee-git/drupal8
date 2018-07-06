@@ -22,7 +22,7 @@ RUN apt-get update \
 WORKDIR /etc/nginx
 RUN rm -Rf conf.d/default.conf
 
-ADD ./templates/default.nginx.cnf conf.d/default.conf 
+ADD ./templates/default.nginx.cnf sites-available/default
 
 EXPOSE 80 443
 
